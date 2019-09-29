@@ -1,78 +1,59 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Base
-{
-public:
-	Base()
-	{
-		m_A = 10;
-		cout << "BaseÄ¬ÈÏ¹¹Ôìº¯Êýµ÷ÓÃ" << endl;
-	}
-	~Base()
-	{
-		cout << "BaseµÄÎö¹¹º¯Êýµ÷ÓÃ" << endl;
-	}
+class Base {
+  public:
+    Base() {
+        m_A = 10;
+        cout << "Baseé»˜è®¤æž„é€ å‡½æ•°è°ƒç”¨" << endl;
+    }
+    ~Base() { cout << "Baseçš„æžæž„å‡½æ•°è°ƒç”¨" << endl; }
 
-	int m_A;
-};
-// ×ÓÀà»á¼Ì³Ð¸¸ÀàµÄ³ÉÔ±ÊôÐÔ£¬³ÉÔ±º¯Êý
-//µ«ÊÇ ×ÓÀà ²»»á¼Ì³Ð ¸¸Àà ¹¹Ôìº¯Êý ºÍ Îö¹¹º¯Êý
-//Ö»ÓÐ¸¸Àà×Ô¼ºÖªµÀÈç¹û¹¹ÔìºÍÎö¹¹×Ô¼ºµÄÊôÐÔ£¬¶ø×ÓÀà²»ÖªµÀ
-
-
-class Son :public Base
-{
-public:
-	Son()
-	{
-		cout << "SonÄ¬ÈÏ¹¹Ôìº¯Êýµ÷ÓÃ" << endl;
-	}
-	~Son()
-	{
-		cout << "SonµÄÎö¹¹º¯Êýµ÷ÓÃ" << endl;
-	}
+    int m_A;
 };
 
-void test01()
-{
-	//Base b1;
+// å­ç±»ä¼šç»§æ‰¿çˆ¶ç±»çš„æˆå‘˜å±žæ€§ï¼Œæˆå‘˜å‡½æ•°
+// ä½†æ˜¯ å­ç±» ä¸ä¼šç»§æ‰¿ çˆ¶ç±» æž„é€ å‡½æ•° å’Œ æžæž„å‡½æ•°
+// æž„é€ æ—¶å…ˆæž„é€  çˆ¶ç±» å†æž„é€  å­ç±» ï¼Œæžæž„æ—¶ç›¸å
+// åªæœ‰çˆ¶ç±»è‡ªå·±çŸ¥é“å¦‚æžœæž„é€ å’Œæžæž„è‡ªå·±çš„å±žæ€§ï¼Œè€Œå­ç±»ä¸çŸ¥é“
 
-	Son s1;
+class Son : public Base {
+  public:
+    Son() { cout << "Soné»˜è®¤æž„é€ å‡½æ•°è°ƒç”¨" << endl; }
+    ~Son() { cout << "Sonçš„æžæž„å‡½æ•°è°ƒç”¨" << endl; }
+};
+
+void test01() {
+    // Base b1;
+
+    Son s1;
 }
 
-
-
-class Base2
-{
-public:
-	Base2(int a)
-	{
-		this->m_A = a;
-		cout << "ÓÐ²Î¹¹Ôìº¯Êýµ÷ÓÃ" << endl;
-	}
-	int m_A;
+class Base2 {
+  public:
+    Base2(int a) { // å­ç±»å¯ä»¥åˆ©ç”¨åˆå§‹åŒ–åˆ—è¡¨æ˜¾ç¤ºè°ƒç”¨ æœ‰å‚æž„é€ 
+        this->m_A = a;
+        cout << "åˆ©ç”¨åˆå§‹åŒ–åˆ—è¡¨æ˜¾ç¤ºè°ƒç”¨ æœ‰å‚æž„é€ " << endl;
+    }
+    int m_A;
 };
 
-class Son2:public Base2
-{
-public:
-	Son2(int a ) : Base2(a)//ÀûÓÃ³õÊ¼»¯ÁÐ±í·½Ê½ ÏÔÊ¾µ÷ÓÃ ÓÐ²Î¹¹Ôì
-	{
-	}
+class Son2 : public Base2 {
+  public:
+    Son2(int a)
+        : Base2(a) //åˆ©ç”¨åˆå§‹åŒ–åˆ—è¡¨ æ˜¾ç¤ºè°ƒç”¨ æœ‰å‚æž„é€ 
+    {}
 };
 
-void test02()
-{
-	Son2 s2(1000);
-}
+void test02() { Son2 s2(1000); }
 
+int main() {
 
-int main(){
+    test01();
+    cout << "-----------" << endl;
+    test02();
 
-	test01();
-
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

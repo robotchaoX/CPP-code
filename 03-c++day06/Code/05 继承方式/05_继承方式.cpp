@@ -1,105 +1,88 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Base1
-{
-public:
-	int m_A;
-protected:
-	int m_B;
-private:
-	int m_C;
+class Base1 {
+  public:
+    int m_A;
+
+  protected:
+    int m_B;
+
+  private:
+    int m_C;
 };
 
-//¹«ÓÐ¼Ì³Ð
-class Son1 : public Base1
-{
-public:
-	void func()
-	{
-		//cout << m_C << endl; //»ùÀàÖÐË½ÓÐµÄÊôÐÔ ²»¿É¼Ì³Ð
-		cout << m_A << endl; //»ùÀàÖÐ¹«ÓÐµÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇpublic
-		cout << m_B << endl;//»ùÀàÖÐ±£»¤µÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇprotected ÀàÍâ·ÃÎÊ²»µ½
-	}
-
+//å…¬æœ‰ç»§æ‰¿
+class Son1 : public Base1 {
+  public:
+    void func() {
+        // cout << m_C << endl; //åŸºç±»ä¸­ç§æœ‰çš„å±žæ€§ ä¸å¯ç»§æ‰¿
+        cout << m_A << endl; //åŸºç±»ä¸­å…¬æœ‰çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯public
+        cout << m_B << endl; //åŸºç±»ä¸­ä¿æŠ¤çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯protected ç±»å¤–è®¿é—®ä¸åˆ°
+    }
 };
-void myFunc()
-{
-	Son1 s1;
-	s1.m_A;
-	//s1.m_B;
+void myFunc() {
+    Son1 s1;
+    s1.m_A;
+    // s1.m_B;
 }
 
-////////////////////////////////////////±£»¤¼Ì³Ð////////////////////////////////////////
+////////////////////////////////////////ä¿æŠ¤ç»§æ‰¿////////////////////////////////////////
 
-class Base2
-{
-public:
-	int m_A;
-protected:
-	int m_B;
-private:
-	int m_C;
-};
-class Son2 :protected Base2
-{
-public:
-	void func()
-	{
-		//cout << m_C << endl; //»ùÀàÖÐË½ÓÐµÄÊôÐÔ ²»¿É¼Ì³Ð
-		cout << m_A << endl;//»ùÀàÖÐ¹«ÓÐµÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇprotected
-		cout << m_B << endl;//»ùÀàÖÐ±£»¤µÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇprotected
-	}
+class Base2 {
+  public:
+    int m_A;
 
+  protected:
+    int m_B;
+
+  private:
+    int m_C;
 };
-void myFunc2()
-{
-	Son2 s;
-	//s.m_A; ²»ÄÜ·ÃÎÊ
+class Son2 : protected Base2 {
+  public:
+    void func() {
+        // cout << m_C << endl; //åŸºç±»ä¸­ç§æœ‰çš„å±žæ€§ ä¸å¯ç»§æ‰¿
+        cout << m_A << endl; //åŸºç±»ä¸­å…¬æœ‰çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯protected
+        cout << m_B << endl; //åŸºç±»ä¸­ä¿æŠ¤çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯protected
+    }
+};
+void myFunc2() {
+    Son2 s;
+    // s.m_A; ä¸èƒ½è®¿é—®
 }
 
+////////////////////////////////////////ç§æœ‰ç»§æ‰¿////////////////////////////////////////
+class Base3 {
+  public:
+    int m_A;
 
-////////////////////////////////////////Ë½ÓÐ¼Ì³Ð////////////////////////////////////////
-class Base3
-{
-public:
-	int m_A;
-protected:
-	int m_B;
-private:
-	int m_C;
+  protected:
+    int m_B;
 
+  private:
+    int m_C;
 };
 
-class Son3 :private Base3
-{
-public:
-	void func()
-	{
-		//cout << m_C << endl; //»ùÀàÖÐË½ÓÐµÄÊôÐÔ ²»¿É¼Ì³Ð
-		cout << m_A << endl; //»ùÀàÖÐ¹«ÓÐµÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇprivate
-		cout << m_B << endl;//»ùÀàÖÐ±£»¤µÄÊôÐÔ ¿É¼Ì³Ð£¬»¹ÊÇprivate
-	}
-
+class Son3 : private Base3 {
+  public:
+    void func() {
+        // cout << m_C << endl; //åŸºç±»ä¸­ç§æœ‰çš„å±žæ€§ ä¸å¯ç»§æ‰¿
+        cout << m_A << endl; //åŸºç±»ä¸­å…¬æœ‰çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯private
+        cout << m_B << endl; //åŸºç±»ä¸­ä¿æŠ¤çš„å±žæ€§ å¯ç»§æ‰¿ï¼Œè¿˜æ˜¯private
+    }
 };
 
-class GrandSon3 :public Son3
-{
-public:
-	void myFunc()
-	{
-		//cout << m_A << endl; //Ëï×ÓÀàÖÐ ·ÃÎÊ²»µ½ m_A£¬ÒòÎªÔÚSon3ÖÐm_AÒÑ¾­ÊÇË½ÓÐÊôÐÔÁË
-	}
-
+class GrandSon3 : public Son3 {
+  public:
+    void myFunc() {
+        // cout << m_A << endl; //å­™å­ç±»ä¸­ è®¿é—®ä¸åˆ° m_Aï¼Œå› ä¸ºåœ¨Son3ä¸­m_Aå·²ç»æ˜¯ç§æœ‰å±žæ€§äº†
+    }
 };
 
+int main() {
 
-
-int main(){
-
-
-
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

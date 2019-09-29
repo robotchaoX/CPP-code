@@ -1,35 +1,32 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Base
-{
-public:
-	int m_A;
-protected: 
-	int m_B;
-private:
-	int m_C;
+class Base {
+  public:
+    int m_A;
 
+  protected:
+    int m_B;
+
+  private:
+    int m_C;
 };
 
-//×ÓÀàÖĞ »á¼Ì³Ğ¸¸ÀàµÄË½ÓĞ³ÉÔ±£¬Ö»ÊÇ±»±àÒë¸øÒş²ØÆğÀ´£¬·ÃÎÊ²»µ½Ë½ÓĞ³ÉÔ±
-class Son :public Base
-{
-public:
-	int m_D;
+//å­ç±»ä¸­ ä¼šç»§æ‰¿çˆ¶ç±»çš„ç§æœ‰æˆå‘˜ï¼Œåªæ˜¯è¢«ç¼–è¯‘ç»™éšè—èµ·æ¥ï¼Œè®¿é—®ä¸åˆ°ç§æœ‰æˆå‘˜
+class Son : public Base {
+  public:
+    int m_D;
 };
 
-void test01()
-{
-	cout << sizeof(Son) << endl;
-
+void test01() { //
+    cout << sizeof(Son) << endl;
 }
 
-int main(){
+int main() {
 
-	test01();
+    test01();
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

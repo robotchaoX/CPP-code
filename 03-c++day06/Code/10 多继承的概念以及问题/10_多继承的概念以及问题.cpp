@@ -1,54 +1,45 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Base1
-{
-public:
-	Base1()
-	{
-		m_A = 10;
-	}
-public:
-	int m_A;
+class Base1 {
+  public:
+    Base1() { m_A = 10; }
+
+  public:
+    int m_A; // é‡å,å®¹æ˜“å¼•å‘äºŒä¹‰æ€§
 };
 
-class Base2
-{
-public:
-	Base2()
-	{
-		m_A = 20;
-	}
-public:
-	int m_A;
+class Base2 {
+  public:
+    Base2() { m_A = 20; }
+
+  public:
+    int m_A; // é‡å,å®¹æ˜“å¼•å‘äºŒä¹‰æ€§
 };
 
-//¶à¼Ì³Ğ
-class Son :public Base1, public Base2
-{
-public:
-
-	int m_C;
-	int m_D;
+//å¤šç»§æ‰¿
+class Son : public Base1, public Base2 {
+  public:
+    int m_C;
+    int m_D;
 };
 
-//¶à¼Ì³ĞÖĞºÜÈİÒ×Òı·¢¶şÒåĞÔ
-void test01()
-{
-	cout << sizeof(Son) << endl;
+//å¤šç»§æ‰¿ä¸­å¾ˆå®¹æ˜“å¼•å‘äºŒä¹‰æ€§
+void test01() {
+    cout << "sizeof(Son) : " << sizeof(Son) << endl;
 
-	Son s1;
-	//s1.m_A; //¶şÒåĞÔ
+    Son s1;
+    // s1.m_A; //äºŒä¹‰æ€§
 
-	cout << s1.Base1::m_A << endl; 
-	cout << s1.Base2::m_A << endl;
+    cout << s1.Base1::m_A << endl; // æŒ‡å®šä½œç”¨åŸŸ
+    cout << s1.Base2::m_A << endl; // æŒ‡å®šä½œç”¨åŸŸ
 }
 
-int main(){
+int main() {
 
-	test01();
+    test01();
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

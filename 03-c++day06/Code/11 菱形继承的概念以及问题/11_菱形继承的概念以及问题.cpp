@@ -1,66 +1,54 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Animal
-{
-public:
-	int m_Age;
+class Animal {
+  public:
+    int m_Age;
 };
 
-//Ğé»ùÀà Sheep
-class Sheep :virtual public Animal
-{
-};
-//Ğé»ùÀà Tuo
-class Tuo :virtual public Animal
-{
-};
+//è™šåŸºç±» Sheep
+class Sheep : virtual public Animal {};
+//è™šåŸºç±» Tuo
+class Tuo : virtual public Animal {};
 
-class SheepTuo :public Sheep, public Tuo
-{
+class SheepTuo : public Sheep, public Tuo {};
 
-};
+// è±å½¢ç»§æ‰¿çš„è§£å†³æ–¹æ¡ˆ åˆ©ç”¨è™šç»§æ‰¿
+// æ“ä½œçš„æ˜¯å…±äº«çš„ä¸€ä»½æ•°æ®
+void test01() {
+    SheepTuo st;
+    st.Sheep::m_Age = 10;
+    st.Tuo::m_Age = 20; // è™šç»§æ‰¿å…±äº«é‡åå±æ€§æ•°æ®
 
-//ÁâĞÎ¼Ì³ĞµÄ½â¾ö·½°¸ ÀûÓÃĞé¼Ì³Ğ
-//²Ù×÷µÄÊÇ¹²ÏíµÄÒ»·İÊı¾İ
-
-void test01()
-{
-	SheepTuo st;
-	st.Sheep::m_Age = 10;
-	st.Tuo::m_Age = 20;
-
-	cout << st.Sheep::m_Age << endl;
-	cout << st.Tuo::m_Age << endl;
-	cout << st.m_Age << endl; //¿ÉÒÔÖ±½Ó·ÃÎÊ£¬Ô­ÒòÒÑ¾­Ã»ÓĞ¶şÒåĞÔµÄ¿ÉÄÜÁË£¬Ö»ÓĞÒ»·İm_Age
+    cout << st.Sheep::m_Age << endl;
+    cout << st.Tuo::m_Age << endl;
+    cout << st.m_Age << endl; // å¯ä»¥ç›´æ¥è®¿é—®ï¼ŒåŸå› å·²ç»æ²¡æœ‰äºŒä¹‰æ€§çš„å¯èƒ½äº†ï¼Œåªæœ‰ä¸€ä»½m_Age
 }
 
-//Í¨¹ıµØÖ· ÕÒµ½ Æ«ÒÆÁ¿
-//ÄÚ²¿¹¤×÷Ô­Àí
-void test02()
-{
-	SheepTuo st;
-	st.m_Age = 100;
+//é€šè¿‡åœ°å€ æ‰¾åˆ° åç§»é‡
+//å†…éƒ¨å·¥ä½œåŸç†
+// void test02() {
+//     SheepTuo st;
+//     st.m_Age = 100;
 
-	//ÕÒµ½SheepµÄÆ«ÒÆÁ¿²Ù×÷
-	//cout<< *(int *)((int *)*(int *)&st + 1) << endl;
+//     //æ‰¾åˆ°Sheepçš„åç§»é‡æ“ä½œ
+//     // cout<< *(int *)((int *)*(int *)&st + 1) << endl;
 
-	cout << *(int*)((int*)*(int *)&st + 1) << endl;
+//     cout << *(int *)((int *)*(int *)&st + 1) << endl;
 
-	//ÕÒµ½TuoµÄÆ«ÒÆÁ¿
-	cout << *((int *)((int *)*((int *)&st + 1) + 1)) << endl;
-	
-	//Êä³öAge
-	cout << ((Animal*)((char *)&st + *(int*)((int*)*(int *)&st + 1)))->m_Age << endl;
+//     //æ‰¾åˆ°Tuoçš„åç§»é‡
+//     cout << *((int *)((int *)*((int *)&st + 1) + 1)) << endl;
 
-}
+//     //è¾“å‡ºAge
+//     cout << ((Animal *)((char *)&st + *(int *)((int *)*(int *)&st + 1)))->m_Age << endl;
+// }
 
-int main(){
+int main() {
 
-	//test01();
-	test02();
+    test01();
+    // test02();
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }
