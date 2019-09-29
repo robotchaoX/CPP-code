@@ -16,8 +16,8 @@ class Person {
     int m_Age;
 };
 
-//智能指针
-//用来托管自定义类型的对象，让对象进行自动的释放
+// 智能指针
+// 用来托管自定义类型的对象，让对象进行自动的释放
 class smartPointer {
   public:
     // 有参构造

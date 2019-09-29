@@ -1,38 +1,37 @@
-#pragma  once
-#define  _CRT_SECURE_NO_WARNINGS
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+#include <cstring>
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-class MyString
-{
-	friend ostream& operator<< (ostream& cout, MyString & str);
-	friend istream& operator>> (istream& cin, MyString & str);
-public:
-	MyString(const char * str);
-	MyString(const MyString & str);
+class MyString {
+    friend ostream &operator<<(ostream &cout, MyString &str);
+    friend istream &operator>>(istream &cin, MyString &str);
 
-	~MyString();
+  public:
+    MyString(const char *str);
+    MyString(const MyString &str);
 
-	//ÖØÔØ=ÔËËã·û
-	MyString& operator = (const char * str);
-	MyString& operator=(const MyString & str);
-	
-	//ÖØÔØ[]ÔËËã·û
-	char& operator[](int index);
+    ~MyString();
 
-	//ÖØÔØ +ÔËËã·û
-	MyString operator+(const char * str);
-	MyString operator+(const MyString& str);
+    //é‡è½½=è¿ç®—ç¬¦
+    MyString &operator=(const char *str);
+    MyString &operator=(const MyString &str); // é‡è½½
 
-	//ÖØÔØ == ÔËËã·û
-	bool operator==(const char * str);
-	bool operator==(const MyString & str);
+    //é‡è½½[]è¿ç®—ç¬¦
+    char &operator[](int index);
 
+    //é‡è½½ +è¿ç®—ç¬¦
+    MyString operator+(const char *str);
+    MyString operator+(const MyString &str);
 
-private:
-	char * pString; //Ö´ĞĞ¶ÑÇøµÄÖ¸Õë
-	int m_Size; // ×Ö·û´®´óĞ¡
+    //é‡è½½ == è¿ç®—ç¬¦
+    bool operator==(const char *str);
+    bool operator==(const MyString &str);
 
+  private:
+    char *pString; //æ‰§è¡Œå †åŒºçš„æŒ‡é’ˆ
+    int m_Size;    // å­—ç¬¦ä¸²å¤§å°
 };
-
-

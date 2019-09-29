@@ -1,60 +1,50 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
 #include "MyString.h"
+#include <iostream>
 using namespace std;
 
-//²âÊÔ MyString
-void test01()
-{
-	MyString str = "abc";
+//æµ‹è¯• MyString
+void test01() {
+    MyString str1 = "abc";
+    cout << "origin str1 = " << str1 << endl;
+    MyString str2(str1);
+    cout << "origin str2 = " << str2 << endl;
+    MyString str3 = "123456";
+    cout << "origin str3 = " << str3 << endl;
 
-	cout << str << endl;
+    /*cout << "è¯·è¾“å…¥stræ–°çš„å†…å®¹ï¼š" << endl;
+    cin >> str;
+    cout << "æ–°å†…å®¹ä¸ºï¼š" << str << endl;*/
 
-	/*cout << "ÇëÊäÈëstrÐÂµÄÄÚÈÝ£º" << endl;
+    str3 = str2;
+    cout << "str3 = " << str3 << endl;
+    str3 = "aaaa";
+    cout << "str3 = " << str3 << endl;
 
-	cin >> str;
+    str3[0] = 'w';
+    cout << "str3 ç¬¬ä¸€ä¸ªä½ç½®ä¸º = " << str3[0] << endl;
 
-	cout << "ÐÂÄÚÈÝÎª£º" << str << endl;*/
+    MyString str4 = "";
+    str4 = str2 + str3; //å­—ç¬¦ä¸²æ‹¼æŽ¥
+    cout << "str2 = " << str2 << endl;
+    cout << "str3 = " << str3 << endl;
+    cout << "str4 = str2 + str3 ä¸º " << str4 << endl;
 
-	MyString str2(str);
+    if (str3 == str4) {
+        cout << "str3 ä¸Ž str4ç›¸ç­‰" << endl;
+    } else {
+        cout << "str3 ä¸Ž str4ä¸ç›¸ç­‰" << endl;
+    }
 
-	MyString str3 = "aaaaaa";
-
-	str3 = str2;
-	str3 = "aaaa";
-
-	cout << "str3 = " << str3 << endl;
-
-	str3[0] = 'w';
-
-	cout << "str3 µÚÒ»¸öÎ»ÖÃÎª = " << str3[0] << endl;
-
-
-	MyString str4 = "";
-	str4 = str2 + str3; //×Ö·û´®Æ´½Ó
-
-	cout << "str4 Îª " << str4 << endl;
-
-
-	if (str3 == str4)
-	{
-		cout << "str3 Óë str4ÏàµÈ" << endl;
-	}
-	else
-	{
-		cout << "str3 Óë str4²»ÏàµÈ" << endl;
-	}
-
-	/*int a = 10;
-	cin >> a;
-	cout << "a = " << a << endl;*/
-
+    /*int a = 10;
+    cin >> a;
+    cout << "a = " << a << endl;*/
 }
 
-int main(){
+int main() {
 
-	test01();
+    test01();
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

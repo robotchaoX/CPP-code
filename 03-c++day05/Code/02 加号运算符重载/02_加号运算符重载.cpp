@@ -28,6 +28,7 @@ Person operator+(Person &p1, Person &p2) //二元 全局 operator+(p1,p2)
     tmp.m_B = p1.m_B + p2.m_B;
     return tmp; // 返回 值
 }
+
 //+号运算符的重载 重载的版本
 Person operator+(Person &p1, int a) //二元
 {

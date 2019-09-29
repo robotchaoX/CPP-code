@@ -38,7 +38,7 @@ class Person2 {
         }
 
         // 重新开辟
-        this->pName = new char[strlen(p.pName) + 1];
+        this->pName = new char[strlen(p.pName) + 1]; // 深拷贝
         strcpy(this->pName, p.pName);
 
         return *this; // 可c = a = b
@@ -60,7 +60,7 @@ void test02() {
     Person2 p2("狗剩");
 
     Person2 p3("");
-    p2 = p1; //默认赋值，默认进行简单的值传递，浅拷贝?? 未重载=也并没有报错？？
+    p2 = p1; //默认赋值，默认进行简单的值传递，浅拷贝?? 未重载=也并没有delete报错？？
     p3 = p2 = p1;
 
     cout << p1.pName << endl;

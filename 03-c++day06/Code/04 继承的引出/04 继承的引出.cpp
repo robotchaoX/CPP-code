@@ -7,20 +7,20 @@ using namespace std;
 //public:
 //	void header()
 //	{
-//		cout << "¹«¹²Í·²¿" << endl;
+//		cout << "å…¬å…±å¤´éƒ¨" << endl;
 //	}
 //	void footer()
 //	{
-//		cout << "¹«¹²µ×²¿" << endl;
+//		cout << "å…¬å…±åº•éƒ¨" << endl;
 //	}
 //	void left()
 //	{
-//		cout << "×ó²àÁĞ±í" << endl;
+//		cout << "å·¦ä¾§åˆ—è¡¨" << endl;
 //	}
 //
 //	void content()
 //	{
-//		cout << "ĞÂÎÅ²¥·Å" << endl;
+//		cout << "æ–°é—»æ’­æ”¾" << endl;
 //	}
 //
 //};
@@ -30,20 +30,20 @@ using namespace std;
 //public:
 //	void header()
 //	{
-//		cout << "¹«¹²Í·²¿" << endl;
+//		cout << "å…¬å…±å¤´éƒ¨" << endl;
 //	}
 //	void footer()
 //	{
-//		cout << "¹«¹²µ×²¿" << endl;
+//		cout << "å…¬å…±åº•éƒ¨" << endl;
 //	}
 //	void left()
 //	{
-//		cout << "×ó²àÁĞ±í" << endl;
+//		cout << "å·¦ä¾§åˆ—è¡¨" << endl;
 //	}
 //
 //	void content()
 //	{
-//		cout << "°×°ÙºÏ¡£¡£¡£" << endl;
+//		cout << "ç™½ç™¾åˆã€‚ã€‚ã€‚" << endl;
 //	}
 //
 //};
@@ -56,7 +56,7 @@ using namespace std;
 //	news.left();
 //	news.content();
 //
-//	//ÓéÀÖÒ³
+//	//å¨±ä¹é¡µ
 //	YULE yl;
 //	yl.header();
 //	yl.footer();
@@ -65,31 +65,31 @@ using namespace std;
 //
 //}
 
-//¼Ì³ĞĞ´·¨
-//³éÏóÒ»¸ö »ùÀàµÄÍøÒ³  ÖØ¸´µÄ´úÂë¶¼Ğ´µ½Õâ¸öÍøÒ³ÉÏ
+//ç»§æ‰¿å†™æ³•
+//æŠ½è±¡ä¸€ä¸ª åŸºç±»çš„ç½‘é¡µ  é‡å¤çš„ä»£ç éƒ½å†™åˆ°è¿™ä¸ªç½‘é¡µä¸Š
 class BasePage
 {
 public:
 	void header()
 	{
-		cout << "¹«¹²Í·²¿" << endl;
+		cout << "å…¬å…±å¤´éƒ¨" << endl;
 	}
 	void footer()
 	{
-		cout << "¹«¹²µ×²¿" << endl;
+		cout << "å…¬å…±åº•éƒ¨" << endl;
 	}
 	void left()
 	{
-		cout << "×ó²àÁĞ±í" << endl;
+		cout << "å·¦ä¾§åˆ—è¡¨" << endl;
 	}
 };
 
-class News :public BasePage //¼Ì³Ğ  NewsÀà ¼Ì³ĞÓÚ BasePageÀà
+class News :public BasePage //ç»§æ‰¿  Newsç±» ç»§æ‰¿äº BasePageç±»
 {
 public:
 	void content()
 	{
-		cout << "ĞÂÎÅ²¥·Å" << endl;
+		cout << "æ–°é—»æ’­æ”¾" << endl;
 	}
 };
 
@@ -98,7 +98,7 @@ class YULE :public BasePage
 public:
 	void content()
 	{
-		cout << "°×°ÙºÏ¡£¡£¡£" << endl;
+		cout << "ç™½ç™¾åˆã€‚ã€‚ã€‚" << endl;
 	}
 };
 
@@ -107,21 +107,21 @@ class Game :public BasePage
 public:
 	void content()
 	{
-		cout << "KPLÖ±²¥" << endl;
+		cout << "KPLç›´æ’­" << endl;
 	}
 };
 
 
 void test02()
 {
-	cout << " ĞÂÎÅÍøÒ³ÄÚÈİ£º " << endl;
+	cout << " æ–°é—»ç½‘é¡µå†…å®¹ï¼š " << endl;
 	News news;
 	news.header();
 	news.footer();
 	news.left();
 	news.content();
 
-	cout << " ÓéÀÖÍøÒ³ÄÚÈİ£º " << endl;
+	cout << " å¨±ä¹ç½‘é¡µå†…å®¹ï¼š " << endl;
 	YULE yl;
 	yl.header();
 	yl.footer();
@@ -129,7 +129,7 @@ void test02()
 	yl.content();
 
 
-	cout << " ÓÎÏ·ÍøÒ³ÄÚÈİ£º " << endl;
+	cout << " æ¸¸æˆç½‘é¡µå†…å®¹ï¼š " << endl;
 	Game game;
 	game.header();
 	game.footer();
@@ -138,8 +138,8 @@ void test02()
 
 }
 
-//¼Ì³Ğ ¼õÉÙ´úÂëÖØ¸´ÄÚÈİ
-//BasePage  »ùÀà (¸¸Àà)   News ÅÉÉúÀà £¨×ÓÀà£©
+//ç»§æ‰¿ å‡å°‘ä»£ç é‡å¤å†…å®¹
+//BasePage  åŸºç±» (çˆ¶ç±»)   News æ´¾ç”Ÿç±» ï¼ˆå­ç±»ï¼‰
 
 
 

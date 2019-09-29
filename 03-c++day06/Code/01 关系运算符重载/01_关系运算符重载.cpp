@@ -1,87 +1,71 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 
+class Person {
+  public:
+    Person() {}
+    Person(string name, int age) {
+        this->m_Name = name;
+        this->m_Age = age;
+    }
 
-//  == 
-class Person
-{
-public:
-	Person(string name, int age)
-	{
-		this->m_Name = name;
-		this->m_Age = age;
-	}
+    //  == è¿ç®—ç¬¦é‡è½½
+    bool operator==(Person &p) {
+        if (this->m_Name == p.m_Name && this->m_Age == p.m_Age) {
+            return true;
+        }
+        return false;
+    }
 
-	bool operator==( Person & p)
-	{
-		if (this->m_Name == p.m_Name && this->m_Age == p.m_Age)
-		{
-			return true;
-		}
-		return false;
-	}
+    //  != è¿ç®—ç¬¦é‡è½½
+    bool operator!=(Person &p) {
+        if (this->m_Name == p.m_Name && this->m_Age == p.m_Age) {
+            return false;
+        }
+        return true;
+    }
 
-	bool operator!=( Person & p)
-	{
-		if (this->m_Name == p.m_Name && this->m_Age == p.m_Age)
-		{
-			return false;
-		}
-		return true;
-	}
-
-public:
-
-	string m_Name;
-	int m_Age;
+  public:
+    string m_Name;
+    int m_Age;
 };
 
-void test01()
-{
-	Person p1("Ð¡Ã÷", 10);
-	Person p2("Ð¡Ç¿", 15);
-	Person p3("Ð¡Ç¿", 15);
-	//int a = 10;
-	//int b = 10;
-	//if (a == b )
-	//{
-	//	cout << "a bÏàµÈ" << endl;
-	//}
+void test01() {
+    Person p1("å°æ˜Ž", 10);
+    Person p2("å°å¼º", 15);
+    Person p3("å°å¼º", 15);
+    // int a = 10;
+    // int b = 10;
+    // if (a == b )
+    //{
+    //	cout << "a bç›¸ç­‰" << endl;
+    //}
 
-	if ( p1 == p2)
-	{
-		cout << "p1 ºÍ p2 ÏàµÈ" << endl;
-	}
-	else
-	{
-		cout << "p1 ºÍ p2 ²»ÏàµÈ" << endl;
-	}
+    if (p1 == p2) {
+        cout << "p1 å’Œ p2 ç›¸ç­‰" << endl;
+    } else {
+        cout << "p1 å’Œ p2 ä¸ç›¸ç­‰" << endl;
+    }
 
-	if (p2 == p3)
-	{
-		cout << "p2 ºÍ p3 ÏàµÈ" << endl;
-	}
-	else
-	{
-		cout << "p2 ºÍ p3 ²»ÏàµÈ" << endl;
-	}
+    if (p2 == p3) {
+        cout << "p2 å’Œ p3 ç›¸ç­‰" << endl;
+    } else {
+        cout << "p2 å’Œ p3 ä¸ç›¸ç­‰" << endl;
+    }
 
-	if (p1 != p2)
-	{
-		cout << "p1 ºÍ p2 ²»ÏàµÈ" << endl;
-	}
-	else
-	{
-		cout << "p1 ºÍ p2 ÏàµÈ" << endl;
-	}
+    if (p1 != p2) {
+        cout << "p1 å’Œ p2 ä¸ç›¸ç­‰" << endl;
+    } else {
+        cout << "p1 å’Œ p2 ç›¸ç­‰" << endl;
+    }
 }
 
-int main(){
+int main() {
 
-	test01();
+    test01();
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

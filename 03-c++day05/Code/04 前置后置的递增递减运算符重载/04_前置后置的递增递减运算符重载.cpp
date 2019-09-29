@@ -9,13 +9,13 @@ class MyInteger {
     MyInteger() { m_Num = 0; };
 
     //前置++重载
-    MyInteger &operator++() {
+    MyInteger &operator++() { // 返回引用
         this->m_Num++;
         return *this;
     }
 
     //后置++ 重载
-    MyInteger operator++(int) {
+    MyInteger operator++(int) { // 返回值
         //先保存目前数据
         MyInteger tmp = *this;
         this->m_Num++;

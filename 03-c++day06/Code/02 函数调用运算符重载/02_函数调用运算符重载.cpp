@@ -1,51 +1,41 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 
-// ()÷ÿ‘ÿ
-
-class MyPrint
-{
-public:
-	void operator()( string text)
-	{
-		cout << text << endl;
-	}
+class MyPrint {
+  public:
+    // () ÈáçËΩΩ
+    void operator()(string text) { //
+        cout << text << endl;
+    }
 };
 
-void test01()
-{
-	MyPrint myPrint;
-	myPrint("hello world1111"); // ∑¬∫Ø ˝
+void test01() {
+    MyPrint myPrint;
+    myPrint("hello world"); // ‰ªøÂáΩÊï∞  // ÂØπË±°();
 }
 
-class MyAdd
-{
-public:
-	int operator()(int v1,int v2)
-	{
-		return v1 + v2;
-	}
-
+class MyAdd {
+  public:
+    // () ÈáçËΩΩ
+    int operator()(int v1, int v2) { //
+        return v1 + v2;
+    }
 };
-void test02()
-{
-	//MyAdd myAdd;
-	//cout << myAdd(1, 1) << endl;
 
-	cout << MyAdd()(1, 1) << endl; //ƒ‰√˚∂‘œÛ
+void test02() {
+    MyAdd myAdd;
+    cout << "‰ªøÂáΩÊï∞ myAdd(1, 1) : " << myAdd(1, 1) << endl;     // ‰ªøÂáΩÊï∞  // ÂØπË±°();
+    cout << "‰ªøÂáΩÊï∞ MyAdd()(1, 1) : " << MyAdd()(1, 1) << endl; // ÂåøÂêçÂØπË±°  // Á±ª();
 }
 
+int main() {
 
+    test01();
 
+    test02();
 
-int main(){
-
-	//test01();
-
-	test02();
-
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }
