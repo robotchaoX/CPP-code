@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "test.h": "c",
-        "iostream": "cpp",
-        "string.h": "c"
-    }
-}
