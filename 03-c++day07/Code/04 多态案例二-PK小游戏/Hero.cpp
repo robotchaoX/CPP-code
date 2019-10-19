@@ -1,73 +1,60 @@
 #include "Hero.h"
 
-Hero::Hero()
-{
-	this->m_Hp = 500;
-
-	this->m_Atk = 50;
-
-	this->m_Def = 50;
-
-	this->m_Name = "Áõ·¨Ê¦";
-
-	this->weapon = NULL;
-
+Hero::Hero() {
+    this->m_Hp = 500;
+    this->m_Atk = 50;
+    this->m_Def = 50;
+    this->m_Name = "åˆ˜æ³•å¸ˆ";
+    this->weapon = NULL;
 }
 
-//×°±¸ÎäÆ÷
-void Hero::EquipWeapon(Weapon * weapon)
-{
-	this->weapon = weapon;
+//è£…å¤‡æ­¦å™¨
+void Hero::EquipWeapon(Weapon *weapon) {
+    this->weapon = weapon;
 
-	cout << "Ó¢ĞÛ£º" << this->m_Name << " ×°±¸ÁËÎäÆ÷ << " << this->weapon->m_WeaponName << " >> " << endl;
-
+    cout << "è‹±é›„ï¼š" << this->m_Name << " è£…å¤‡äº†æ­¦å™¨ << " << this->weapon->m_WeaponName << " >> " << endl;
 }
-//¹¥»÷
-void Hero::Attack(Monster * monster)
-{
-	int damage = 0;
-	int addHp = 0;
-	bool isHold = false;
-	bool isCrit = false;
+//æ”»å‡»
+void Hero::Attack(Monster *monster) {
+    int damage = 0;
+    int addHp = 0;
+    bool isHold = false;
+    bool isCrit = false;
 
-	if (this->weapon == NULL) //ÎäÆ÷Îª¿Õ Ã»ÓĞ¼Ó³É
-	{
-		damage = this->m_Atk;
-	}
-	else
-	{
-		//»ù´¡ÉËº¦
-		damage = this->m_Atk + this->weapon->getBaseDamage();
-		//¼ÆËãÎüÑª
-		addHp = this->weapon->getSuckBlood();
-		//¼ÆËã¶¨Éí
-		isHold = this->weapon->getHold();
-		//¼ÆËã±©»÷
-		isCrit = this->weapon->getCrit();
-	}
-	if (isCrit) //±©»÷ ÉËº¦ ¼Ó³É
-	{
-		damage = damage * 2;
-		cout << "Ó¢ĞÛµÄÎäÆ÷´¥·¢ÁË±©»÷Ğ§¹û£¬¹ÖÎïÊÕµ½ÁËË«±¶µÄÉËº¦£¬ÉËº¦Öµ£º" << damage << endl;
-	}
-	if (isHold)
-	{
-		cout << "Ó¢ĞÛµÄÎäÆ÷´¥·¢ÁË¶¨ÉíĞ§¹û£¬¹ÖÎïÍ£Ö¹¹¥»÷Ò»»ØºÏ"<< endl;
-	}
-	if (addHp > 0)
-	{
-		cout << "Ó¢ĞÛµÄÎäÆ÷´¥·¢ÁËÎüÑªĞ§¹û£¬Ó¢ĞÛÔö¼ÓµÄÑªÁ¿Îª" << addHp << endl;
-	}
+    if (this->weapon == NULL) //æ­¦å™¨ä¸ºç©º æ²¡æœ‰åŠ æˆ
+    {
+        damage = this->m_Atk;
+    } else {
+        //åŸºç¡€ä¼¤å®³
+        damage = this->m_Atk + this->weapon->getBaseDamage();
+        //è®¡ç®—å¸è¡€
+        addHp = this->weapon->getSuckBlood();
+        //è®¡ç®—å®šèº«
+        isHold = this->weapon->getHold();
+        //è®¡ç®—æš´å‡»
+        isCrit = this->weapon->getCrit();
+    }
+    if (isCrit) //æš´å‡» ä¼¤å®³ åŠ æˆ
+    {
+        damage = damage * 2;
+        cout << "è‹±é›„çš„æ­¦å™¨è§¦å‘äº†æš´å‡»æ•ˆæœï¼Œæ€ªç‰©æ”¶åˆ°äº†åŒå€çš„ä¼¤å®³ï¼Œä¼¤å®³å€¼ï¼š" << damage << endl;
+    }
+    if (isHold) {
+        cout << "è‹±é›„çš„æ­¦å™¨è§¦å‘äº†å®šèº«æ•ˆæœï¼Œæ€ªç‰©åœæ­¢æ”»å‡»ä¸€å›åˆ" << endl;
+    }
+    if (addHp > 0) {
+        cout << "è‹±é›„çš„æ­¦å™¨è§¦å‘äº†å¸è¡€æ•ˆæœï¼Œè‹±é›„å¢åŠ çš„è¡€é‡ä¸º" << addHp << endl;
+    }
 
-	//ÉèÖÃ¹ÖÎï¶¨Éí
-	monster->m_Hold = isHold;
+    //è®¾ç½®æ€ªç‰©å®šèº«
+    monster->m_Hold = isHold;
 
-	//¼ÆËãÕæÊµÉËº¦
-	int trueDamage = (damage - monster->m_Def) > 0 ? damage - monster->m_Def : 1;
+    //è®¡ç®—çœŸå®ä¼¤å®³
+    int trueDamage = (damage - monster->m_Def) > 0 ? damage - monster->m_Def : 1;
 
-	monster->m_Hp -= trueDamage;
+    monster->m_Hp -= trueDamage;
 
-	this->m_Hp += addHp;
+    this->m_Hp += addHp;
 
-	cout << "Ó¢ĞÛ" << this->m_Name << "¹¥»÷ÁËµĞÈË " << monster->m_Name << "Ôì³ÉÁË ÉËº¦" << trueDamage << endl;
+    cout << "è‹±é›„" << this->m_Name << "æ”»å‡»äº†æ•Œäºº " << monster->m_Name << "é€ æˆäº† ä¼¤å®³" << trueDamage << endl;
 }

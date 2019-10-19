@@ -1,28 +1,27 @@
-#pragma once 
-#include <iostream>
-#include "Weapon.h"
-#include <string>
+#pragma once
 #include "Monster.h"
+#include "Weapon.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Monster;
 
-class Hero
-{
-public:
-	Hero();
+class Hero {
+  public:
+    Hero();
 
-	string m_Name; //ÈËÃû
+    string m_Name; //äººå
 
-	int m_Atk; //¹¥»÷Á¦
+    int m_Atk; //æ”»å‡»åŠ›
 
-	int m_Def; // ·ÀÓùÁ¦
+    int m_Def; // é˜²å¾¡åŠ›
 
-	int m_Hp; //ÑªÁ¿
+    int m_Hp; //è¡€é‡
 
-	Weapon * weapon; //ÎäÆ÷
+    Weapon *weapon; //æ­¦å™¨
 
-	void EquipWeapon(Weapon * weapon);
+    void EquipWeapon(Weapon *weapon);
 
-	void Attack( Monster * monster );
+    void Attack(Monster *monster);
 };

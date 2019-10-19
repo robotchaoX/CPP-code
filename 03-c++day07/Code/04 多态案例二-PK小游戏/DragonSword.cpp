@@ -1,56 +1,45 @@
 #include "DragonSword.h"
 
-DragonSword::DragonSword()
-{
-	this->m_BaseDamage = 20;
-	this->m_WeaponName = "ÍÀÁú±¦µ¶";
-	this->suckRate = 20;
-	this->holdRate = 30;
-	this->critRate = 35;
-
+DragonSword::DragonSword() {
+    this->m_BaseDamage = 20;
+    this->m_WeaponName = "å± é¾™å®åˆ€";
+    this->suckRate = 20;
+    this->holdRate = 30;
+    this->critRate = 35;
 }
 
-int DragonSword::getBaseDamage()
-{
-	return this->m_BaseDamage;
+int DragonSword::getBaseDamage() {
+    return this->m_BaseDamage;
 }
 
-int DragonSword::getSuckBlood()
-{
-	if (isTrigger(suckRate))
-	{
-		return this->m_BaseDamage * 0.5;  //°´ÕÕÎäÆ÷»ù´¡ÉËº¦Ò»°ëÎüÑª
-	}
-	return 0;
+int DragonSword::getSuckBlood() {
+    if (isTrigger(suckRate)) {
+        return this->m_BaseDamage * 0.5; //æŒ‰ç…§æ­¦å™¨åŸºç¡€ä¼¤å®³ä¸€åŠå¸è¡€
+    }
+    return 0;
 }
 
-bool DragonSword::getHold()
-{
-	if (isTrigger(holdRate))
-	{
-		return true;
-	}
-	return false;
+bool DragonSword::getHold() {
+    if (isTrigger(holdRate)) {
+        return true;
+    }
+    return false;
 }
 
-bool DragonSword::getCrit()
-{
-	if (isTrigger(critRate))
-	{
-		return true;
-	}
-	return false;
+bool DragonSword::getCrit() {
+    if (isTrigger(critRate)) {
+        return true;
+    }
+    return false;
 }
 
-bool DragonSword::isTrigger(int rate)
-{
-	//Í¨¹ıisTriggerÅĞ¶ÏÊÇ·ñ´¥·¢ÌØĞ§
-	//Ëæ»ú 1~100µÄÊı×Ö
+bool DragonSword::isTrigger(int rate) {
+    //é€šè¿‡isTriggeråˆ¤æ–­æ˜¯å¦è§¦å‘ç‰¹æ•ˆ
+    //éšæœº 1~100çš„æ•°å­—
 
-	int num = rand() % 100 + 1;
-	if (num < rate)
-	{
-		return true;
-	}
-	return false;
+    int num = rand() % 100 + 1;
+    if (num < rate) {
+        return true;
+    }
+    return false;
 }

@@ -1,32 +1,21 @@
 #include "Monster.h"
 
-
-Monster::Monster()
-{
-	this->m_Hp = 300;
-
-	this->m_Atk = 70;
-
-	this->m_Def = 40;
-
-	this->m_Hold = false;
-
-	this->m_Name = "±È¿Ë´óÄ§Íõ";
+Monster::Monster() {
+    this->m_Hp = 300;
+    this->m_Atk = 70;
+    this->m_Def = 40;
+    this->m_Hold = false;
+    this->m_Name = "æ¯”å…‹å¤§é­”çŽ‹";
 }
 
-void Monster::Attack(Hero * hero)
-{
-	if (this->m_Hold)
-	{
-		cout << "¹ÖÎï" << this->m_Name << "±»¶¨ÉíÁË£¬±¾»ØºÏÎÞ·¨¹¥»÷" << endl;
-		return;
-	}
+void Monster::Attack(Hero *hero) {
+    if (this->m_Hold) {
+        cout << "æ€ªç‰©" << this->m_Name << "è¢«å®šèº«äº†ï¼Œæœ¬å›žåˆæ— æ³•æ”»å‡»" << endl;
+        return;
+    }
 
-	//¼ÆËã¹¥»÷ÉËº¦
-	int damage = (this->m_Atk - hero->m_Def) > 0 ? this->m_Atk - hero->m_Def : 1;
-
-	hero->m_Hp -= damage;
-
-	cout << "¹ÖÎï" << this->m_Name << "¹¥»÷ÁËÓ¢ÐÛ " << hero->m_Name << "Ôì³ÉÁË ÉËº¦" << damage << endl;
-
+    //è®¡ç®—æ”»å‡»ä¼¤å®³
+    int damage = (this->m_Atk - hero->m_Def) > 0 ? this->m_Atk - hero->m_Def : 1;
+    hero->m_Hp -= damage;
+    cout << "æ€ªç‰©" << this->m_Name << "æ”»å‡»äº†è‹±é›„ " << hero->m_Name << "é€ æˆäº† ä¼¤å®³" << damage << endl;
 }

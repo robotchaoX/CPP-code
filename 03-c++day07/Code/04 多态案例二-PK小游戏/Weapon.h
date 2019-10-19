@@ -1,25 +1,23 @@
-#pragma  once
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
 
-//³éÏóÀà
-class Weapon
-{
-public:
-	//»ñÈ¡»ù´¡ÉËº¦
-	virtual int getBaseDamage() = 0;
+//æŠ½è±¡ç±»
+class Weapon {
+  public:
+    //è·å–åŸºç¡€ä¼¤å®³
+    virtual int getBaseDamage() = 0;
 
-	//»ñÈ¡ÎüÑª
-	virtual int getSuckBlood() = 0;
+    //è·å–å¸è¡€
+    virtual int getSuckBlood() = 0;
 
-	//»ñÈ¡ÊÇ·ñ¶¨Éí
-	virtual bool getHold() = 0;
+    //è·å–æ˜¯å¦å®šèº«
+    virtual bool getHold() = 0;
 
-	//»ñÈ¡ÊÇ·ñ±©»÷
-	virtual bool getCrit() = 0;
+    //è·å–æ˜¯å¦æš´å‡»
+    virtual bool getCrit() = 0;
 
-
-	string m_WeaponName; //ÎäÆ÷Ãû³Æ
-	int m_BaseDamage; //»ù´¡ÉËº¦
+    string m_WeaponName; //æ­¦å™¨åç§°
+    int m_BaseDamage; //åŸºç¡€ä¼¤å®³
 };

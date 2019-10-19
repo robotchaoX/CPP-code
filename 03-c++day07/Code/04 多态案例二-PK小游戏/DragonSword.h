@@ -1,33 +1,30 @@
-#pragma once 
-#include <iostream>
+#pragma once
 #include "Weapon.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
-class DragonSword:public Weapon
-{
-public:
-	DragonSword();
+class DragonSword : public Weapon {
+  public:
+    DragonSword();
 
-	//»ñÈ¡»ù´¡ÉËº¦
-	virtual int getBaseDamage() ;
+    //è·å–åŸºç¡€ä¼¤å®³
+    virtual int getBaseDamage();
 
-	//»ñÈ¡ÎüÑª
-	virtual int getSuckBlood();
+    //è·å–å¸è¡€
+    virtual int getSuckBlood();
 
-	//»ñÈ¡ÊÇ·ñ¶¨Éí
-	virtual bool getHold();
+    //è·å–æ˜¯å¦å®šèº«
+    virtual bool getHold();
 
-	//»ñÈ¡ÊÇ·ñ±©»÷
-	virtual bool getCrit();
+    //è·å–æ˜¯å¦æš´å‡»
+    virtual bool getCrit();
 
-	//  ÎüÑªÂÊ  ¶¨ÉíÂÊ ±©Á¦ÂÊ 
-	int suckRate;
-	int holdRate;
-	int critRate;
+    //  å¸è¡€ç‡  å®šèº«ç‡ æš´åŠ›ç‡
+    int suckRate;
+    int holdRate;
+    int critRate;
 
-	//´«Èë¸ÅÂÊ ÅĞ¶ÏÊÇ·ñ´¥·¢
-	bool isTrigger(int rate);
-
-
+    //ä¼ å…¥æ¦‚ç‡ åˆ¤æ–­æ˜¯å¦è§¦å‘
+    bool isTrigger(int rate);
 };

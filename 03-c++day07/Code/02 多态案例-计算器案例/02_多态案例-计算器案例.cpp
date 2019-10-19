@@ -1,158 +1,128 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-//class Calculator
-//{
-//public:
-//
-//	void setv1(int v)
-//	{
-//		this->val1 = v;
-//	}
-//
-//	void setv2(int v)
-//	{
-//		this->val2 = v;
-//	}
-//
-//
-//	int getResult(string oper)
-//	{
-//		if (oper == "+")
-//		{
-//			return val1 + val2;
-//		}
-//		else if (oper == "-")
-//		{
-//			return val1 - val2;
-//		}
-//	}
-//private:
-//	int val1;
-//	int val2;
-//
-//};
-//
-//void test01()
-//{
-//	Calculator cal;
-//	cal.setv1(10);
-//	cal.setv2(10);
-//	cout << cal.getResult("+") << endl;
-//	cout << cal.getResult("-") << endl;
-//
-//}
+class Calculator {
+  public:
+    void setv1(int v) {
+        this->val1 = v;
+    }
 
-//ÕæÕýµÄ¿ª·¢ÖÐ£¬ÓÐ¸ö¿ª·¢Ô­Ôò ¿ª±ÕÔ­Ôò
-// ¶ÔÀ©Õ¹¿ª·Å  ¶ÔÐÞ¸Ä¹Ø±Õ
+    void setv2(int v) {
+        this->val2 = v;
+    }
 
+    int getResult(string oper) {
+        if (oper == "+") {
+            return val1 + val2;
+        } else if (oper == "-") {
+            return val1 - val2;
+        }
+    }
 
-//ÀûÓÃ¶àÌ¬ÊµÏÖ¼ÆËãÆ÷
-class abstractCalculator
-{
-public:
-
-	//Ðéº¯Êý virtual int getResult(){ return 0; };
-
-	//´¿Ðéº¯Êý
-	//Èç¹û¸¸ÀàÖÐÓÐÁË ´¿Ðéº¯Êý  ×ÓÀà¼Ì³Ð¸¸Àà£¬¾Í±ØÐëÒªÊµÏÖ ´¿Ðéº¯Êý
-	//Èç¹û¸¸ÀàÖÐ ÓÐÁË ´¿Ðéº¯Êý £¬Õâ¸ö¸¸Àà ¾ÍÎÞ·¨ÊµÀý»¯¶ÔÏóÁË
-	//Õâ¸öÀàÓÐÁË´¿Ðéº¯Êý£¬Í¨³£ÓÖ³ÆÎª ³éÏóÀà
-	virtual int getResult()  = 0;
-
-
-	void setv1(int v)
-	{
-		this->val1 = v;
-	}
-
-	void setv2(int v)
-	{
-		this->val2 = v;
-	}
-
-public:
-	int val1;
-	int val2;
-
+  private:
+    int val1;
+    int val2;
 };
 
-//Èç¹û¸¸ÀàÖÐÓÐÁË ´¿Ðéº¯Êý  ×ÓÀà¼Ì³Ð¸¸Àà£¬¾Í±ØÐëÒªÊµÏÖ ´¿Ðéº¯Êý
-class A:public abstractCalculator
-{
-public:
-	virtual int getResult()
-	{
-		return 0;
-	}
-};
-
-//¼Ó·¨¼ÆËãÆ÷
-class PlusCalculator :public abstractCalculator
-{
-public:
-	virtual int getResult()
-	{ 
-		return val1 + val2;
-	};
-};
-class SubCalculator : public abstractCalculator
-{
-public:
-	virtual int getResult()
-	{
-		return val1 - val2;
-	};
-};
-class ChengCalculator :public abstractCalculator
-{
-public:
-	virtual int getResult()
-	{
-		return val1 * val2;
-	};
-
-};
-
-void test02()
-{
-	abstractCalculator * abc ; 
-	//¼Ó·¨¼ÆËãÆ÷
-	abc =  new PlusCalculator;
-
-	abc->setv1(10);
-	abc->setv2(20);
-
-	cout << abc->getResult() << endl;
-
-	delete abc;
-
-	abc = new SubCalculator;
-	abc->setv1(10);
-	abc->setv2(20);
-	cout << abc->getResult() << endl;
-
-	delete abc;
-
-	abc = new ChengCalculator;
-	abc->setv1(10);
-	abc->setv2(20);
-	cout << abc->getResult() << endl;
-
-
-	//Èç¹û¸¸ÀàÓÐÁË´¿Ðéº¯Êý£¬²»ÄÜÊµÀý»¯¶ÔÏóÁË
-	/*abstractCalculator aaa;
-	abstractCalculator * abc = new abstractCalculator;*/
-
+void test01() {
+    Calculator cal;
+    cal.setv1(30);
+    cal.setv2(10);
+    cout << cal.getResult("+") << endl;
+    cout << cal.getResult("-") << endl;
 }
 
-int main(){
+//çœŸæ­£çš„å¼€å‘ä¸­ï¼Œæœ‰ä¸ªå¼€å‘åŽŸåˆ™ å¼€é—­åŽŸåˆ™
+// å¯¹æ‰©å±•å¼€æ”¾  å¯¹ä¿®æ”¹å…³é—­
 
-	//test01();
+//åˆ©ç”¨å¤šæ€å®žçŽ°è®¡ç®—å™¨
+class abstractCalculator {
+  public:
+    //è™šå‡½æ•° virtual int getResult(){ return 0; };
 
-	test02();
+    //çº¯è™šå‡½æ•°
+    //å¦‚æžœçˆ¶ç±»ä¸­æœ‰äº† çº¯è™šå‡½æ•°  å­ç±»ç»§æ‰¿çˆ¶ç±»ï¼Œå°±å¿…é¡»è¦å®žçŽ° çº¯è™šå‡½æ•°
+    //å¦‚æžœçˆ¶ç±»ä¸­ æœ‰äº† çº¯è™šå‡½æ•° ï¼Œè¿™ä¸ªçˆ¶ç±» å°±æ— æ³•å®žä¾‹åŒ–å¯¹è±¡äº†
+    //è¿™ä¸ªç±»æœ‰äº†çº¯è™šå‡½æ•°ï¼Œé€šå¸¸åˆç§°ä¸º æŠ½è±¡ç±»
+    virtual int getResult() = 0; //çº¯è™šå‡½æ•°
 
-	system("pause");
-	return EXIT_SUCCESS;
+    void setv1(int v) {
+        this->val1 = v;
+    }
+
+    void setv2(int v) {
+        this->val2 = v;
+    }
+
+  public:
+    int val1;
+    int val2;
+};
+
+//å¦‚æžœçˆ¶ç±»ä¸­æœ‰äº† çº¯è™šå‡½æ•°  å­ç±»ç»§æ‰¿çˆ¶ç±»ï¼Œå°±å¿…é¡»è¦å®žçŽ° çº¯è™šå‡½æ•°
+class A : public abstractCalculator {
+  public:
+    virtual int getResult() {
+        return 0;
+    }
+};
+
+//åŠ æ³•è®¡ç®—å™¨
+class PlusCalculator : public abstractCalculator {
+  public:
+    virtual int getResult() {
+        return val1 + val2;
+    };
+};
+class SubCalculator : public abstractCalculator {
+  public:
+    virtual int getResult() {
+        return val1 - val2;
+    };
+};
+class ChengCalculator : public abstractCalculator {
+  public:
+    virtual int getResult() {
+        return val1 * val2;
+    };
+};
+
+void test02() {
+    abstractCalculator *abc;
+    //åŠ æ³•è®¡ç®—å™¨
+    abc = new PlusCalculator;
+
+    abc->setv1(10);
+    abc->setv2(20);
+
+    cout << abc->getResult() << endl;
+
+    delete abc;
+
+    abc = new SubCalculator;
+    abc->setv1(10);
+    abc->setv2(20);
+    cout << abc->getResult() << endl;
+
+    delete abc;
+
+    abc = new ChengCalculator;
+    abc->setv1(10);
+    abc->setv2(20);
+    cout << abc->getResult() << endl;
+
+    //å¦‚æžœçˆ¶ç±»æœ‰äº†çº¯è™šå‡½æ•°ï¼Œä¸èƒ½å®žä¾‹åŒ–å¯¹è±¡äº†
+    /*abstractCalculator aaa;
+    abstractCalculator * abc = new abstractCalculator;*/
+}
+
+int main() {
+
+    // test01();
+
+    test02();
+
+    // system("pause");
+    return EXIT_SUCCESS;
 }

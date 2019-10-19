@@ -1,85 +1,74 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
+#include <string.h>
 using namespace std;
 
-class Animal
-{
-public:
+class Animal {
+  public:
+    virtual void speak() { // çˆ¶ç±»è™šå‡½æ•°
+        cout << "åŠ¨ç‰©åœ¨è¯´è¯" << endl;
+    }
 
-	virtual void speak()
-	{
-		cout << "¶¯ÎïÔÚËµ»°" << endl;
-	}
+    //æ™®é€šæžæž„ æ˜¯ä¸ä¼šè°ƒç”¨å­ç±»çš„æžæž„çš„ï¼Œæ‰€ä»¥å¯èƒ½ä¼šå¯¼è‡´é‡Šæ”¾ä¸å¹²å‡€
+    //åˆ©ç”¨è™šæžæž„æ¥è§£å†³è¿™ä¸ªé—®é¢˜
+    // virtual ~Animal()
+    //{
+    //	cout << "Animalçš„æžæž„è°ƒç”¨" << endl;
+    //}
 
-	//ÆÕÍ¨Îö¹¹ ÊÇ²»»áµ÷ÓÃ×ÓÀàµÄÎö¹¹µÄ£¬ËùÒÔ¿ÉÄÜ»áµ¼ÖÂÊÍ·Å²»¸É¾»
-	//ÀûÓÃÐéÎö¹¹À´½â¾öÕâ¸öÎÊÌâ
-	//virtual ~Animal()
-	//{
-	//	cout << "AnimalµÄÎö¹¹µ÷ÓÃ" << endl;
-	//}
-
-	//´¿ÐéÎö¹¹ Ð´·¨ÈçÏÂ 
-	//´¿ÐéÎö¹¹ £¬ÐèÒªÉùÃ÷ »¹ÐèÒªÊµÏÖ ÀàÄÚÉùÃ÷£¬ÀàÍâÊµÏÖ
-	virtual ~Animal() = 0;
-	//Èç¹ûº¯ÊýÖÐ³öÏÖÁË ´¿ÐéÎö¹¹º¯Êý£¬ÄÇÃ´Õâ¸öÀàÒ²Ëã³éÏóÀà
-	//³éÏóÀà ²»¿ÉÊµÀý»¯¶ÔÏó
-
+    //çº¯è™šæžæž„ å†™æ³•å¦‚ä¸‹
+    //çº¯è™šæžæž„ ï¼Œéœ€è¦å£°æ˜Ž è¿˜éœ€è¦å®žçŽ° ç±»å†…å£°æ˜Žï¼Œç±»å¤–å®žçŽ°
+    virtual ~Animal() = 0;
+    //å¦‚æžœå‡½æ•°ä¸­å‡ºçŽ°äº† çº¯è™šæžæž„å‡½æ•°ï¼Œé‚£ä¹ˆè¿™ä¸ªç±»ä¹Ÿç®—æŠ½è±¡ç±»
+    //æŠ½è±¡ç±» ä¸å¯å®žä¾‹åŒ–å¯¹è±¡
 };
-Animal::~Animal()
-{
-	//´¿ÐéÎö¹¹º¯ÊýÊµÏÖ
-	cout << "AnimalµÄ´¿ÐéÎö¹¹µ÷ÓÃ" << endl;
+Animal::~Animal() {
+    //çº¯è™šæžæž„å‡½æ•°å®žçŽ°
+    cout << "Animalçš„çº¯è™šæžæž„è°ƒç”¨" << endl;
 }
-// Èç¹û³öÏÖ´¿ÐéÎö¹¹£¬ÀàÒ²Ëã³éÏóÀà£¬²»ÄÜÊµÀý»¯¶ÔÏó
-//void func()
+// å¦‚æžœå‡ºçŽ°çº¯è™šæžæž„ï¼Œç±»ä¹Ÿç®—æŠ½è±¡ç±»ï¼Œä¸èƒ½å®žä¾‹åŒ–å¯¹è±¡
+// void func()
 //{
 //	Animal an;
 //	Animal * animal = new Animal;
 //}
 
-class Cat:public Animal
-{
-public:
-	Cat(const char * name)
-	{
-		this->m_Name = new char[strlen(name) + 1];
-		strcpy(this->m_Name, name);
-	}
+class Cat : public Animal {
+  public:
+    Cat(const char *name) {
+        this->m_Name = new char[strlen(name) + 1];
+        strcpy(this->m_Name, name);
+    }
 
-	virtual void speak()
-	{
-		cout << "Ð¡Ã¨ÔÚËµ»°" << endl;
-	}
+    virtual void speak() {
+        cout << "å°çŒ«åœ¨è¯´è¯" << endl;
+    }
 
-	~Cat()
-	{
-		cout << "CatµÄÎö¹¹µ÷ÓÃ" << endl;
-		if (this->m_Name !=NULL)
-		{
-			delete[] this->m_Name;
-			this->m_Name = NULL;
-		}
-	}
+    ~Cat() {
+        cout << "Catçš„æžæž„è°ƒç”¨" << endl;
+        if (this->m_Name != NULL) {
+            delete[] this->m_Name;
+            this->m_Name = NULL;
+        }
+    }
 
-	char * m_Name;
-
+    char *m_Name;
 };
 
+void test01() {
+    Animal *animal = new Cat("TOM");
+    animal->speak();
+    delete animal;
 
-void test01()
-{
-	Animal * animal = new Cat("TOM");
-	animal->speak();
-
-	delete animal;
-
+    // Cat *cat = new Cat("TOM");
+    // cat->speak();
+    // delete cat;
 }
 
+int main() {
 
-int main(){
+    test01();
 
-	test01();
-
-	system("pause");
-	return EXIT_SUCCESS;
+    // system("pause");
+    return EXIT_SUCCESS;
 }

@@ -1,27 +1,22 @@
-#pragma once 
-#include <iostream>
+#pragma once
 #include "Weapon.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
+class Knife : public Weapon {
+  public:
+    Knife();
 
-class Knife :public Weapon
-{
-public:
-	Knife();
+    //鑾峰彇鍩虹浼ゅ
+    virtual int getBaseDamage();
 
-	//获取基础伤害
-	virtual int getBaseDamage();
+    //鑾峰彇鍚歌
+    virtual int getSuckBlood();
 
-	//获取吸血
-	virtual int getSuckBlood();
+    //鑾峰彇鏄惁瀹氳韩
+    virtual bool getHold();
 
-	//获取是否定身
-	virtual bool getHold();
-
-	//获取是否暴击
-	virtual bool getCrit();
-
+    //鑾峰彇鏄惁鏆村嚮
+    virtual bool getCrit();
 };
-
-

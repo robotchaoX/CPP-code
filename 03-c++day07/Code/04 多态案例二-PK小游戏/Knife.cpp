@@ -1,31 +1,22 @@
 #include "Knife.h"
 
-
-Knife::Knife()
-{
-	this->m_BaseDamage = 10;
-
-	this->m_WeaponName = "Ð¡µ¶";
+Knife::Knife() {
+    this->m_BaseDamage = 10;
+    this->m_WeaponName = "å°åˆ€";
 }
 
-int Knife::getBaseDamage()
-{
-
-	return this->m_BaseDamage;
-
+int Knife::getBaseDamage() {
+    return this->m_BaseDamage;
 }
 
-int Knife::getSuckBlood()
-{
-	return 0;
+int Knife::getSuckBlood() {
+    return 0;
 }
 
-bool Knife::getHold()
-{
-	return false;
+bool Knife::getHold() {
+    return false;
 }
 
-bool Knife::getCrit()
-{
-	return false;
+bool Knife::getCrit() {
+    return false;
 }

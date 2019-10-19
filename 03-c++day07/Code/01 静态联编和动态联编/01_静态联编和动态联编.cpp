@@ -1,47 +1,65 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Animal
-{
-public:
-	virtual void speak()
-	{
-		cout << "¶¯ÎïÔÚËµ»°" << endl;
-	}
-
+class Animal {
+  public:
+    // virtual è™šå‡½æ•°ï¼Œå‘ç”Ÿå¤šæ€
+    virtual void speak() { // å°çŒ«åœ¨è¯´è¯
+        // void speak() { // åŠ¨ç‰©åœ¨è¯´è¯
+        cout << "åŠ¨ç‰©åœ¨è¯´è¯" << endl;
+    }
 };
 
-class Cat :public Animal
-{
-public:
-	void speak()
-	{
-		cout << "Ğ¡Ã¨ÔÚËµ»°" << endl;
-	}
+class Cat : public Animal {
+  public:
+    void speak() { //
+        cout << "å°çŒ«åœ¨è¯´è¯" << endl;
+    }
 };
 
-//µ÷ÓÃdoSpeak £¬speakº¯ÊıµÄµØÖ·Ôç¾Í°ó¶¨ºÃÁË£¬Ôç°ó¶¨£¬¾²Ì¬Áª±à£¬±àÒë½×¶Î¾ÍÈ·¶¨ºÃÁËµØÖ·
-//Èç¹ûÏëµ÷ÓÃÃ¨µÄspeak£¬²»ÄÜÌáÇ°°ó¶¨ºÃº¯ÊıµÄµØÖ·ÁË£¬ËùÒÔĞèÒªÔÚÔËĞĞÊ±ºòÔÙÈ¥È·¶¨º¯ÊıµØÖ·
-//¶¯Ì¬Áª±à£¬Ğ´·¨ doSpeak·½·¨¸ÄÎªĞéº¯Êı,ÔÚ¸¸ÀàÉÏÉùÃ÷Ğéº¯Êı£¬·¢ÉúÁË¶àÌ¬
-// ¸¸ÀàµÄÒıÓÃ»òÕßÖ¸Õë Ö¸Ïò ×ÓÀà¶ÔÏó
-void doSpeak(Animal & animal) //Animal & animal = cat
-{
-	animal.speak();
-}
-//Èç¹û·¢ÉúÁË¼Ì³ĞµÄ¹ØÏµ£¬±àÒëÆ÷ÔÊĞí½øĞĞÀàĞÍ×ª»»
+// çˆ¶ç±»çš„å¼•ç”¨æˆ–è€…æŒ‡é’ˆ æŒ‡å‘ å­ç±»å¯¹è±¡
 
-void test01()
-{
-	Cat cat;
-	doSpeak(cat);
-
+//è°ƒç”¨doSpeak ï¼Œspeakå‡½æ•°çš„åœ°å€æ—©å°±ç»‘å®šå¥½äº†ï¼Œæ—©ç»‘å®šï¼Œé™æ€è”ç¼–ï¼Œç¼–è¯‘é˜¶æ®µå°±ç¡®å®šå¥½äº†åœ°å€
+//å¦‚æœæƒ³è°ƒç”¨çŒ«çš„speakï¼Œä¸èƒ½æå‰ç»‘å®šå¥½å‡½æ•°çš„åœ°å€äº†ï¼Œæ‰€ä»¥éœ€è¦åœ¨è¿è¡Œæ—¶å€™å†å»ç¡®å®šå‡½æ•°åœ°å€
+//åŠ¨æ€è”ç¼–ï¼Œå†™æ³• doSpeakæ–¹æ³•æ”¹ä¸ºè™šå‡½æ•°,åœ¨çˆ¶ç±»ä¸Šå£°æ˜è™šå‡½æ•°ï¼Œå‘ç”Ÿäº†å¤šæ€
+//å¦‚æœå‘ç”Ÿäº†ç»§æ‰¿çš„å…³ç³»ï¼Œç¼–è¯‘å™¨å…è®¸è¿›è¡Œç±»å‹è½¬æ¢
+void doSpeak(Animal &animal) // Animal & animal = cat
+{ // å­ç±»é‡å†™çˆ¶ç±»è™šå‡½æ•°,å­ç±»å¯¹è±¡animalè°ƒç”¨ï¼Œå°±è¿‘åŸåˆ™
+    animal.speak();
 }
 
-int main(){
+void doSpeak2(Cat &cat) // Animal & animal = cat
+{ // å­ç±»ç›´æ¥é‡å†™çˆ¶ç±»æ–¹æ³•,å­ç±»å¯¹è±¡catè°ƒç”¨ï¼Œå°±è¿‘åŸåˆ™
+    cat.speak(); // å°çŒ«åœ¨è¯´è¯
+}
 
-	test01();
+void test01() {
+    Cat cat;
+    doSpeak(cat);
+    // doSpeak2(cat);
+}
 
-	system("pause");
-	return EXIT_SUCCESS;
+// // å†…éƒ¨å®ç°
+// void test02() {
+//     // cout << sizeof(Animal) << endl;
+//     //çˆ¶ç±»æŒ‡é’ˆæŒ‡å‘å­ç±»å¯¹è±¡ å¤šæ€
+//     Animal *animal = new Cat; // å­ç±»å¯¹è±¡
+
+//     // animal->speak();
+//     // *(int*)*(int*)animal å‡½æ•°åœ°å€
+//     ((void (*)())(*(int *)*(int *)animal))();
+
+//     //  *((int*)*(int*)animal+1)çŒ«åƒé±¼çš„åœ°å€
+//     ((void (*)())(*((int *)*(int *)animal + 1)))();
+// }
+
+int main() {
+
+    test01();
+
+    // test02();
+
+    // system("pause");
+    return EXIT_SUCCESS;
 }
