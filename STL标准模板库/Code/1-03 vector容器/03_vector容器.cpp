@@ -135,6 +135,20 @@ void test03() {
  * reserve(int len);//容器预留len个元素长度，预留位置不初始化，元素不可访问。
  */
 void test04() {
+    vector<int> v4;
+    v4.reserve(4); //预留出空间大小
+    // 预留了空间可以直接赋值，但是.size()仍然为0，reserve是个坑,
+    // 要像数组一样用必须用resize
+    v4[0] = 999;
+    v4[1] = 888;
+    cout << v4[0] << endl;
+    cout << v4[1] << endl;
+    cout << "reserve size " << v4.size() << endl;
+    v4.resize(4); // resize默认值0
+    cout << v4[2] << endl;
+    cout << v4[3] << endl;
+    cout << "reserve resize size " << v4.size() << endl;
+
     vector<int> v;
 
     // 若已知数据长度很大，预留空间效率高
@@ -244,29 +258,51 @@ void test05() {
     }
 }
 
+// 遍历vector
 void test06() {
-    vector<int> v;
+    vector<int> vec;
     for (int i = 0; i < 10; i++) {
-        v.push_back(i);
+        vec.push_back(i);
     }
-    // printVector(v);
+
+    // iterator 顺序迭代器
+    for (vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << "--" << endl;
+
+    // for_each遍历
+    for_each(vec.begin(), vec.end(), [&](int &val) { cout << val << " "; });
+    cout << "--" << endl;
+
+    // c++11 auto遍历
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << "--" << endl;
+
+    // c++11 :容器遍历
+    for (const auto &elem : vec) { // &引用，const只读
+        cout << elem << " "; // elem是值，不是迭代器
+    }
+    cout << "--" << endl;
 
     // 顺序遍历
     // iterator 顺序迭代器 begin首 end尾
-    for (vector<int>::iterator it = v.begin(); it != v.end(); it++) {
+    for (vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
         cout << *it << " ";
     }
     cout << endl;
 
     //逆序遍历
     // reverse_iterator 逆序迭代器 rbegin逆首 rend逆尾
-    for (vector<int>::reverse_iterator it = v.rbegin(); it != v.rend(); it++) {
+    for (vector<int>::reverse_iterator it = vec.rbegin(); it != vec.rend(); it++) {
         cout << *it << " ";
     }
     cout << endl;
 
     // vector迭代器是随机访问的迭代器  支持跳跃式访问
-    vector<int>::iterator it = v.begin();
+    vector<int>::iterator it = vec.begin();
     it = it + 3;
     //如果上述写法不报错，这个迭代器是随机访问迭代器
     cout << *it << endl;
@@ -277,6 +313,187 @@ void test06() {
     }
     list<int>::iterator lIt = l.begin();
     // lIt = lIt + 1; //不支持随机访问
+}
+
+// 显示二维vector
+void showMat(vector<vector<int>> &mat) {
+    for (int i = 0; i < mat.size(); i++) {
+        for (int j = 0; j < mat[0].size(); j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "--+--" << endl;
+}
+
+// 二维向量
+void test07() {
+
+    const int M = 3; // row
+    const int N = 5; // col
+    // 二维vector初始化
+    vector<vector<int>> mat0; //定义二维vector，未指定大小
+    vector<vector<int>> mat1(mat0); //拷贝构造二维vector
+
+    // 一次指定外层和内层向量vector大小
+    // 定义并初始化M*N的二维vector，默认所有元素初始化为0
+    vector<vector<int>> mat2(M, vector<int>(N)); //定义二维动态数组M*N
+    showMat(mat2);
+    // 定义并初始化M*N的二维vector，所有元素初始化为 -1
+    vector<vector<int>> mat3(M, vector<int>(N, -1)); //定义二维动态数组M*N
+    showMat(mat3);
+
+    vector<int> v = {1, 2, 3, 4, 5};
+    //初始化一个 二维vector行row, 第二个参数为一维vector;
+    vector<vector<int>> mat4(M, vector<int>(v.begin(), v.end()));
+    showMat(mat4);
+
+    // 定义二维vector时直接初始化
+    vector<vector<int>> mat = {{1, 0, 3, 4, 5}, //
+                               {2, 1, 4, 3, 2}, //
+                               {3, 1, 5, 6, 7}};
+    showMat(mat);
+
+    vector<vector<int>> mat6;
+    vector<int> v1 = {1, 2, 3, 4, 5};
+    vector<int> v2 = {1, 1, 1, 2, 2};
+    vector<int> v3 = {3, 3, 3, 4, 4};
+    // 一行一行push_back
+    mat6.push_back(v1);
+    mat6.push_back(v2);
+    mat6.push_back(v3);
+    showMat(mat6);
+
+    vector<vector<int>> mat9;
+    // 一行一行push_back
+    mat9.push_back({1, 2, 3, 4, 5}); // 一行{1, 2, 3, 4, 5}
+    mat9.push_back(vector<int>{1, 1, 1, 2, 2}); // 匿名vector对象？
+    mat9.push_back(vector<int>({3, 3, 3, 4, 4})); // 匿名vector对象？
+    showMat(mat9);
+
+    vector<vector<int>> mat7;
+    mat7.resize(3); // 指定外层向量大小，3行，必须
+    // 一个一个元素push_back
+    mat7[0].push_back(0); // 第1行
+    mat7[0].push_back(0);
+    mat7[1].push_back(1); // 第2行
+    mat7[1].push_back(1);
+    mat7[2].push_back(2); // 第3行
+    mat7[2].push_back(2);
+    showMat(mat7);
+
+    // 如果指定外层和内层向量的大小，就可用operator[]进行读和写；
+    // 如果只指定外层向量大小，就能用push_back()函数进行写，不能用operator[]进行读和写。
+
+    // 定义m*n的二维vector
+    vector<vector<int>> mat8(M); //定义二维动态数组包含3个向量,只指定外层向量大小，3行
+    for (int i = 0; i < M; i++) {
+        mat8[i].resize(N); //设置二维数组的大小3X5，值全为0，遍历指定内层向量大小5列
+    }
+    //指定外层和内层向量的大小，就可用operator[],和使用数组一样使用这个二维vector
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            mat8[i][j] = (i * j); // 和使用数组一样使用这个二维vector
+        }
+    }
+    //输出二维动态数组
+    showMat(mat8);
+
+    //二维数组遍历
+    vector<vector<int>> mat35 = {{1, 0, 3, 4, 5}, //
+                                 {2, 1, 4, 3, 2}, //
+                                 {3, 1, 5, 6, 7}};
+    // for二维数组遍历
+    for (int i = 0; i < mat35.size(); i++) { //遍历行
+        for (int j = 0; j < mat35[0].size(); j++) { //遍历列
+            cout << mat35[i][j] << ", ";
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+    // c++11 容器遍历
+    for (const auto &row : mat35) { //遍历行 // &引用，const只读
+        for (const auto &elem : row) { //遍历列
+            cout << elem << ", "; // elem是值，不是迭代器
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+    // for auto迭代器遍历
+    for (auto mat_it = mat35.begin(); mat_it != mat35.end(); ++mat_it) { //遍历行
+        for (auto inner_it = mat_it->begin(); inner_it != mat_it->end(); ++inner_it) { //遍历列
+            cout << *inner_it << ", ";
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+    // for迭代器遍历
+    for (vector<vector<int>>::iterator mat_it = mat35.begin(); mat_it != mat35.end(); ++mat_it) { //遍历行
+        for (vector<int>::iterator inner_it = mat_it->begin(); inner_it != mat_it->end(); ++inner_it) { //遍历列
+            cout << *inner_it << ", ";
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+    // for_each遍历
+    for_each(mat35.begin(), mat35.end(), [&](vector<int> &val) { //遍历行
+        for_each(val.begin(), val.end(), [&](int &val) { //遍历列
+            cout << val << ", ";
+        });
+        cout << endl;
+    });
+    cout << "---" << endl;
+
+    // 二维数组直接初始化
+    vector<vector<int>> vv = {{7, 0, 3, 5, 6}, //
+                              {7, 1, 4, 5}, //
+                              {6, 1, 5}, //
+                              {5, 0, 6}, //
+                              {5}}; // 各列长度不一致，分配了等长空间，未用？
+    // for二维数组遍历
+    for (int i = 0; i < vv.size(); i++) { //遍历行
+        for (int j = 0; j < vv[0].size(); j++) { //遍历列
+            cout << vv[i][j] << ", "; // 未初始化的赋随机值
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+    // c++11 容器遍历
+    for (const auto &row : vv) { //遍历行
+        for (const auto &elem : row) { //遍历列
+            cout << elem << ", "; // 未初始化的不会被访问
+        }
+        cout << endl;
+    }
+    cout << "---" << endl;
+
+    // 二维vector转一维vector
+}
+
+void cinMat() {
+    int m, n;
+    cin >> m >> n;
+    vector<vector<int>> value(m, vector<int>(n)); // 两个>用空格分开
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int temp;
+            cin >> temp;
+            value[i].push_back(temp);
+        }
+    }
+
+    int row, col;
+    cin >> row >> col;
+    vector<vector<int>> ivec(row);
+    for (int i = 0; i < row; i++) {
+        ivec[i].resize(col); //指定了大小
+        for (int j = 0; j < col; j++) {
+            int val;
+            cin >> val;
+            // ivec[i].push_back(val);
+            ivec[i][j] = val;
+        }
+    }
 }
 
 //排序规则,普通函数
@@ -450,6 +667,8 @@ int main() {
     test05();
 
     test06();
+
+    test07();
 
     test10();
 

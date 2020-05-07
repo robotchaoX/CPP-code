@@ -1,7 +1,8 @@
 #include <iostream>
-using namespace std;
 #include <set> // set  multiset头文件
 #include <string>
+
+using namespace std;
 
 /*
 set构造函数
@@ -40,6 +41,7 @@ void test01() {
 
     set<int> s1;
     //关联式容器 key进行排序，默认从小到大自动排序
+    // set插入值
     s1.insert(5);
     s1.insert(1);
     s1.insert(9);
@@ -59,6 +61,25 @@ void test01() {
     // 按值删
     s1.erase(5); //  3 7 9
     printSet(s1);
+
+    // set第一个元素值
+    set<int>::iterator itben = s1.begin();
+    cout << *itben << endl;
+
+    auto itben2 = s1.begin();
+    cout << *itben2 << endl;
+
+    // set遍历
+    set<int>::iterator iter = s1.begin();
+    while (iter != s1.end()) {
+        cout << *iter;
+        iter++;
+    }
+
+    //遍历
+    for (auto i : s1) {
+        cout << i << endl;
+    }
 }
 
 /*
@@ -78,8 +99,8 @@ void test02() {
     s1.insert(7);
     //对于set 没有value  key就是value
 
+    // set查找值
     set<int>::iterator pos = s1.find(3);
-    //判断是否找到
     if (pos != s1.end()) {
         cout << "find找到了：值为：" << *pos << endl;
     } else {
@@ -163,6 +184,20 @@ class myCompare {
 
 // set容器排序
 void test04() {
+    // // 内建函数greater<int>()规则排序 不可以这样？？
+    // set<int, greater<int>()> s0;
+    // s0.insert(5);
+    // s0.insert(1);
+    // s0.insert(9);
+    // s0.insert(3);
+    // s0.insert(7);
+
+    // // 打印结果，修改了自动排序规则
+    // for (set<int, greater<int>()>::iterator it = s0.begin(); it != s0.end(); it++) {
+    //     cout << *it << " ";
+    // }
+    // cout << endl;
+
     //从大到小排序
     //在set插入之前就指定排序规则
     set<int, myCompare> s1;
