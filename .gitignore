@@ -1,37 +1,56 @@
-# Prerequisites
-*.d
+#忽略所有文件和目录
+*
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#不忽略.gitignore
+!.gitignore
 
-# Precompiled Headers
-*.gch
-*.pch
+#不忽略指定目录和下面所有目录,而不是目录和文件
+!/dir1/
+!/dir1/**/
+!/dir2/
+!/dir2/**/
+#不忽略根目录和下面所有目录
+!/
+!/**/
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#忽略任意子目录文件夹
+# IDE
+.vscode/
+**/.idea
 
-# Fortran module files
-*.mod
-*.smod
+#忽略编译文件夹
+build/
+cmake-build-*/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
 
-# Executables
-*.exe
-*.out
-*.app
+#不忽略指定扩展名文件
+!*.cpp
+!*.hpp
+!*.c
+!*.h
+!makefile
+!Makefile
+!CmakeList.txt
+!*.md
+!*.doc
+!*.docx
+!*.txt
+!*.jpg
+!*.png
 
-.vscode
 
-# wps
-.~*
+#.clang-format
+
+# upload
+.vscode-upload.json
+
+# back up
+*.bak
+
+# core文件
+core
+
+#忽略wps缓存
+.~*.doc
+.~*.docx
+*.~*
