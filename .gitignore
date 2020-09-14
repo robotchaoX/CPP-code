@@ -18,10 +18,14 @@
 .vscode/
 **/.idea
 
+
 #忽略编译文件夹
 build/
 cmake-build-*/
+build-*/
 
+# 忽略Doc
+**/Doc/
 
 #不忽略指定扩展名文件
 !*.cpp
@@ -32,9 +36,9 @@ cmake-build-*/
 !Makefile
 !CmakeList.txt
 !*.md
-!*.doc
-!*.docx
 !*.txt
+# !*.doc
+# !*.docx
 !*.jpg
 !*.png
 
@@ -49,8 +53,12 @@ cmake-build-*/
 
 # core文件
 core
+# 默认可执行文件名
+a.out
 
 #忽略wps缓存
 .~*.doc
 .~*.docx
 *.~*
+
+00笔试/
